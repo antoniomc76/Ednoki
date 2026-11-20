@@ -1,7 +1,7 @@
 # Archivos temporales de PyInstaller
 build/
 dist/
-*.spec
+
 
 # Archivos de Python
 __pycache__/
