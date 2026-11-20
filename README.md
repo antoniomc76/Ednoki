@@ -50,7 +50,6 @@ The software is provided "as is", without warranty of any kind. Use it at your o
 This project is free software distributed under the terms of the **GNU General Public License v3.0 (GPLv3)**. See the [LICENSE](LICENSE) file for more details.
 
 ---
----
 
 ## Español
 
