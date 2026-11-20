@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credits — ENICON</title>
+  <style>
+    :root {
+      --bg-page: #f4f5f7;
+      --bg-card: #ffffff;
+      --text-primary: #111827;
+      --text-secondary: #374151;
+      --text-muted: #6b7280;
+      --accent-yellow: #e5af1b;
+      --accent-red: #b31300;
+      --link-color: #9e1100;
+      --border-color: #e5e7eb;
+      --callout-bg: #f9fafb;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-page: #121316;
+        --bg-card: #1b1d22;
+        --text-primary: #f3f4f6;
+        --text-secondary: #d1d5db;
+        --text-muted: #9ca3af;
+        --link-color: #f5b921;
+        --border-color: #2e323b;
+        --callout-bg: #23262d;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem 1rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-secondary);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 2.5rem 2.75rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    /* --- HEADER MATCHING REFERENCE --- */
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1.35rem;
+      padding-bottom: 1.75rem;
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .app-logo {
+      width: 84px;
+      height: 84px;
+      flex-shrink: 0;
+      display: block;
+      object-fit: contain;
+    }
+
+    .app-title-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .app-title-group h1 {
+      margin: 0;
+      font-size: 3.25rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .app-title-group .subtitle {
+      margin: 0.35rem 0 0 0;
+      font-size: 1.125rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--text-primary);
+    }
+
+    /* --- CONTENT AND SECTIONS --- */
+    .credits-intro {
+      font-size: 1rem;
+      margin-top: 0;
+      margin-bottom: 1.75rem;
+      padding: 0.9rem 1.15rem;
+      background-color: var(--callout-bg);
+      border-left: 4px solid var(--accent-yellow);
+      border-radius: 6px;
+    }
+
+    h2 {
+      margin: 1.85rem 0 0.65rem 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 1.05em;
+      background-color: var(--accent-red);
+      border-radius: 2px;
+    }
+
+    p {
+      margin: 0 0 1rem 0;
+      font-size: 0.96rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    u {
+      text-decoration-color: var(--accent-red);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+    }
+
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease, opacity 0.15s ease;
+    }
+
+    a:hover {
+      border-bottom-color: currentColor;
+      opacity: 0.85;
+    }
+
+    .license-box {
+      margin-top: 1.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.88em;
+      padding: 0.15em 0.4em;
+      background-color: var(--callout-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+    }
+
+    /* --- RESPONSIVE / NARROW WINDOWS --- */
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.5rem 1.25rem;
+      }
+
+      .app-header {
+        gap: 1rem;
+      }
+
+      .app-logo {
+        width: 64px;
+        height: 64px;
+      }
+
+      .app-title-group h1 {
+        font-size: 2.35rem;
+      }
+
+      .app-title-group .subtitle {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="app-header">
+      <img src="enicon-icono.png" alt="ENICON logo" class="app-logo">
+      <div class="app-title-group">
+        <h1>ENICON</h1>
+        <p class="subtitle">Internal Name and Comment Editor for Nikon Picture Controls</p>
+      </div>
+    </header>
+
+    <p class="credits-intro">
+      Created by <strong>Antonio Martínez</strong> (<a href="https://instantes.net" target="_blank" rel="noopener noreferrer">instantes.net</a>) in Python using <a href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude</a> and <a href="https://www.deepseek.com/en/" target="_blank" rel="noopener noreferrer">DeepSeek</a>.
+    </p>
+
+    <section>
+      <h2>Disclaimer</h2>
+      <p>
+        This is an independent, unofficial project. <strong>There is no affiliation, sponsorship, endorsement, or commercial relationship of any kind with Nikon Corporation</strong>. <strong>Nikon</strong>, <strong>Picture Control</strong>, and <strong>NX Studio</strong> are trademarks or registered trademarks of Nikon Corporation, and are mentioned here solely for descriptive and compatibility purposes.
+      </p>
+    </section>
+
+    <section>
+      <h2>Limitation of Liability</h2>
+      <p>
+        This software is provided &ldquo;as is&rdquo;, without warranties of any kind, express or implied. <u>The author shall not be liable for any direct, indirect, incidental, or consequential damages</u> (including data loss, file corruption, or malfunction in cameras or applications) arising from the use of this program. Use of the software is solely and exclusively at the user&rsquo;s own risk and responsibility. Always make backups and verify resulting profiles before using them in important shoots.
+      </p>
+    </section>
+
+    <section class="license-box">
+      <h2>License</h2>
+      <p>
+        This project is free software distributed under the terms of the <strong>GNU General Public License v3.0 (GPLv3)</strong>.
+      </p>
+      <p>
+        See the <code>LICENSE</code> file or visit <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener noreferrer">https://www.gnu.org/licenses/gpl-3.0.html</a> for the full license text.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

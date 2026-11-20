@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayuda e instalación de recetas — ENICON</title>
+  <style>
+    :root {
+      --bg-page: #f4f5f7;
+      --bg-card: #ffffff;
+      --text-primary: #111827;
+      --text-secondary: #374151;
+      --text-muted: #6b7280;
+      --accent-yellow: #e5af1b;
+      --accent-red: #b31300;
+      --link-color: #9e1100;
+      --border-color: #e5e7eb;
+      --callout-bg: #f9fafb;
+      --step-badge-bg: #e5af1b;
+      --step-badge-text: #111827;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-page: #121316;
+        --bg-card: #1b1d22;
+        --text-primary: #f3f4f6;
+        --text-secondary: #d1d5db;
+        --text-muted: #9ca3af;
+        --link-color: #f5b921;
+        --border-color: #2e323b;
+        --callout-bg: #23262d;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem 1rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Noto Sans", sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-secondary);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 2.5rem 2.75rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    /* --- ENCABEZADO --- */
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1.35rem;
+      padding-bottom: 1.75rem;
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .app-logo {
+      width: 84px;
+      height: 84px;
+      flex-shrink: 0;
+      display: block;
+      object-fit: contain;
+    }
+
+    .app-title-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .app-title-group h1 {
+      margin: 0;
+      font-size: 3.25rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .app-title-group .subtitle {
+      margin: 0.35rem 0 0 0;
+      font-size: 1.125rem;
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--text-primary);
+    }
+
+    /* --- CONTENIDO Y SECCIONES --- */
+    .intro-callout {
+      font-size: 1rem;
+      margin-top: 0;
+      margin-bottom: 1.75rem;
+      padding: 0.95rem 1.2rem;
+      background-color: var(--callout-bg);
+      border-left: 4px solid var(--accent-yellow);
+      border-radius: 6px;
+    }
+
+    h2 {
+      margin: 2rem 0 0.85rem 0;
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 1.05em;
+      background-color: var(--accent-red);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    p {
+      margin: 0 0 1rem 0;
+      font-size: 0.96rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* --- LISTA DE PASOS --- */
+    .steps-list {
+      list-style: none;
+      margin: 0.75rem 0 1.25rem 0;
+      padding: 0;
+      counter-reset: step-counter;
+    }
+
+    .steps-list li {
+      position: relative;
+      padding-left: 2.35rem;
+      margin-bottom: 0.95rem;
+      font-size: 0.96rem;
+      counter-increment: step-counter;
+    }
+
+    .steps-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .steps-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      width: 1.55rem;
+      height: 1.55rem;
+      border-radius: 50%;
+      background-color: var(--step-badge-bg);
+      color: var(--step-badge-text);
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* --- CÓDIGO --- */
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.87em;
+      padding: 0.15em 0.42em;
+      background-color: var(--callout-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      color: var(--text-primary);
+      word-break: break-word;
+    }
+
+    .subtitle code {
+      font-size: 0.82em;
+      vertical-align: baseline;
+    }
+
+    /* --- BLOQUE DE COMPATIBILIDAD / AVISOS --- */
+    .tip-box {
+      margin-top: 2rem;
+      padding: 1.25rem 1.35rem;
+      background-color: var(--callout-bg);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-red);
+      border-radius: 8px;
+      font-size: 0.94rem;
+    }
+
+    .tip-box h2 {
+      margin-top: 0;
+      margin-bottom: 0.85rem;
+      font-size: 1.08rem;
+    }
+
+    .compat-list {
+      margin: 0 0 1rem 0;
+      padding-left: 1.25rem;
+    }
+
+    .compat-list li {
+      margin-bottom: 0.55rem;
+    }
+
+    .compat-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .compat-note {
+      margin-top: 0.9rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.92rem;
+    }
+
+    /* --- ADAPTABILIDAD MÓVIL / VENTANAS ESTRECHAS --- */
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.5rem 1.25rem;
+      }
+
+      .app-header {
+        gap: 1rem;
+      }
+
+      .app-logo {
+        width: 64px;
+        height: 64px;
+      }
+
+      .app-title-group h1 {
+        font-size: 2.35rem;
+      }
+
+      .app-title-group .subtitle {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="app-header">
+      <img class="app-logo" src="enicon-icono.png" alt="Logotipo de ENICON">
+      <div class="app-title-group">
+        <h1>ENICON</h1>
+        <p class="subtitle">Cómo instalar recetas Picture Control personalizadas (<code>.npc</code> <code>.np2</code> <code>.np3</code>)</p>
+      </div>
+    </header>
+
+    <p class="intro-callout">
+      Una vez editado el nombre interno o los comentarios de tus archivos <code>.npc</code> <code>.np2</code> <code>.np3</code> con <strong>ENICON</strong>, puedes importarlos en <strong>Nikon NX Studio</strong> para aplicarlos a tus archivos RAW (NEF) o transferirlos después a tu cámara mediante una tarjeta de memoria.
+    </p>
+
+    <section>
+      <h2>Transferir las recetas a una cámara Nikon</h2>
+      <p>Si además quieres utilizar las recetas directamente al disparar en tu cámara:</p>
+      <ol class="steps-list">
+        <li>Formatea una tarjeta de memoria desde el menú de tu cámara Nikon para que se genere la estructura de carpetas oficial.</li>
+        <li>Conecta la tarjeta al ordenador y crea (si no existe) la carpeta <code>NIKON\CUSTOMPC</code> en el directorio raíz de la tarjeta.</li>
+        <li>Copia los archivos compatibles (<code>.npc</code>, <code>.np2</code> o <code>.np3</code>) dentro de <code>NIKON\CUSTOMPC</code>.</li>
+        <li>Inserta la tarjeta en la cámara y ve a <em>Menú disparo foto &rarr; Gestionar Picture Control &rarr; Cargar/guardar &rarr; Copiar a cámara</em>.</li>
+        <li>Elige el archivo que quieras importar y guárdalo en uno de los espacios libres o sobrescribiendo uno existente.</li>
+        <li>Repite el proceso si quieres añadir otra receta.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Importar a NX Studio</h2>
+      <p>Se pueden importar hasta 150 Picture Control personalizados.</p>
+      <ol class="steps-list">
+        <li>Abre <strong>NX Studio</strong> y selecciona cualquier fotografía RAW (<code>.NEF</code>) en el navegador de imágenes.</li>
+        <li>En el menú superior, ve a <em>Archivo &rarr; Importar Picture Control personalizado...</em> También puedes pulsar el botón correspondiente en la barra de herramientas (a la derecha).</li>
+        <li>En la ventana emergente, selecciona el origen de los archivos: <strong>Tarjeta de memoria</strong> o <strong>Desde archivo</strong>.</li>
+        <li>Busca los archivos (<code>.npc</code> <code>.np2</code> o <code>.np3</code>) guardados con ENICON, selecciónalos (puedes seleccionar varios manteniendo pulsada la tecla <code>Ctrl</code> o <code>Mayús</code>) y pulsa <strong>Aceptar</strong>.</li>
+        <li>Los perfiles aparecerán inmediatamente en la sección <strong>Picture Control personalizado</strong> con el nuevo nombre interno que hayas definido.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Borrado en lote de recetas / Picture Control personalizados en NX Studio</h2>
+      <p>Se ha comprobado que este método es válido para Windows 11:</p>
+      <ol class="steps-list">
+        <li><strong>Cierra NX Studio</strong> por completo.</li>
+        <li>Abre el <em>Editor del registro</em> de Windows (<code>regedit.exe</code>).</li>
+        <li>Navega hasta la ruta <code>HKEY_CURRENT_USER\Software\Nikon\Common\PictureControl</code>.</li>
+        <li><strong>Copia de seguridad:</strong> haz clic derecho sobre la clave <code>Nikon</code> &rarr; <strong>Exportar</strong> y guarda el archivo <code>.reg</code>. Si necesitas restaurar los datos más adelante, haz doble clic sobre él.</li>
+        <li>En <code>regedit</code>, selecciona la subclave <code>CustomCurves</code>. Haz clic en el primer valor numérico, <code>Mayús</code> + clic en el último y pulsa <strong>Supr</strong>. Conserva la clave <code>CustomCurves</code> y no borres entradas no numéricas como <code>(Predeterminado)</code> si aparece.</li>
+        <li>Abre NX Studio y comprueba que el desplegable de Picture Control ya no muestra los perfiles eliminados.</li>
+      </ol>
+    </section>
+
+    <aside class="tip-box">
+      <h2>Compatibilidad de los archivos Picture Control personalizados</h2>
+      <ul class="compat-list">
+        <li><code>.np3</code>, <code>.np2</code>, <code>.npc</code>: Cámaras mirrorless de montura Z, D6, D780.</li>
+        <li><code>.np2</code>, <code>.npc</code>: Cámaras mirrorless de montura Z, D6, D5, D500, D850, D810/D810A, D780, D750, D7500, D7200, D5500/D5600.</li>
+        <li><code>.npc</code>: D3/D3X/D3S/D4/D4S, Df, D800/D800E, D700, D600/D610, D300/D300S, D7000/D7100, D5000/D5100/D5200/D5300, D90, cámaras de la serie Nikon 1 (excluyendo J5), COOLPIX A.</li>
+      </ul>
+      <p class="compat-note">
+        <strong>Nota sobre la compatibilidad de los archivos <code>.np3</code>:</strong> Algunos perfiles <code>.np3</code> creados para cámaras con procesador <strong>EXPEED 7</strong> (como Nikon Zf, Z8, Z9, Z6III o Z50II) incluyen ajustes de <em>Picture Control flexible</em> o gradación de color avanzada. NX Studio los reproducirá fielmente en el ordenador, pero solo podrás cargarlos en cámaras Nikon compatibles con dicho formato.
+      </p>
+    </aside>
+  </main>
+</body>
+</html>
