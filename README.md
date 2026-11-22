@@ -1,4 +1,4 @@
-# ENICON
+# Ednoki
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
@@ -10,9 +10,9 @@
 
 ## English
 
-**ENICON** is a lightweight, open-source desktop application designed to easily edit the internal names and comments of Nikon Custom Picture Control files (`.np3`, `.np2`, and `.ncp`). 
+**Ednoki** is a lightweight, open-source desktop application designed to easily edit the internal names and comments of Nikon Custom Picture Control files (`.np3`, `.np2`, and `.ncp`). 
 
-If you have ever struggled to identify your custom recipes in Nikon NX Studio or your camera because they all have generic names, ENICON allows you to rename them, add descriptive comments, and manage your collection with a clean and intuitive interface.
+If you have ever struggled to identify your custom recipes in Nikon NX Studio or your camera because they all have generic names, Ednoki allows you to rename them, add descriptive comments, and manage your collection with a clean and intuitive interface.
 
 ### Features
 
@@ -26,7 +26,7 @@ If you have ever struggled to identify your custom recipes in Nikon NX Studio or
 ### Download & Installation
 
 1. Go to the **[Releases](../../releases)** section of this repository.
-2. Download the latest `enicon_v1.2.exe` file.
+2. Download the latest `Ednoki_v1.2.exe` file.
 3. Move the `.exe` file to any folder on your computer and double-click it to run.
 
 > **Windows SmartScreen Warning:**
@@ -53,9 +53,9 @@ This project is free software distributed under the terms of the **GNU General P
 
 ## Español
 
-**ENICON** es una aplicación de escritorio ligera y de código abierto diseñada para editar fácilmente los nombres internos y los comentarios de los archivos Custom Picture Control de Nikon (`.np3`, `.np2` y `.ncp`).
+**Ednoki** es una aplicación de escritorio ligera y de código abierto diseñada para editar fácilmente los nombres internos y los comentarios de los archivos Custom Picture Control de Nikon (`.np3`, `.np2` y `.ncp`).
 
-Si alguna vez has tenido problemas para identificar tus recetas personalizadas en Nikon NX Studio o en tu cámara porque todas tienen nombres genéricos, ENICON te permite renombrarlas, añadir comentarios descriptivos y gestionar tu colección con una interfaz limpia e intuitiva.
+Si alguna vez has tenido problemas para identificar tus recetas personalizadas en Nikon NX Studio o en tu cámara porque todas tienen nombres genéricos, Ednoki te permite renombrarlas, añadir comentarios descriptivos y gestionar tu colección con una interfaz limpia e intuitiva.
 
 ### Características
 
@@ -69,7 +69,7 @@ Si alguna vez has tenido problemas para identificar tus recetas personalizadas e
 ### Descarga e Instalación
 
 1. Ve a la sección de **[Releases](../../releases)** de este repositorio.
-2. Descarga el último archivo `enicon_v1.2.exe`.
+2. Descarga el último archivo `Ednoki_v1.2.exe`.
 3. Mueve el archivo `.exe` a cualquier carpeta de tu ordenador y haz doble clic para ejecutarlo.
 
 > **Aviso de Windows SmartScreen:**
