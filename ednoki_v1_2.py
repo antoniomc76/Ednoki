@@ -43,6 +43,11 @@ from pathlib import Path
 from tkinter import filedialog, messagebox, ttk
 from tkinter import font as tkfont
 
+# Atajos de teclado: Command (⌘) en macOS, Control en el resto de sistemas.
+IS_MAC = sys.platform == "darwin"
+MOD = "Command" if IS_MAC else "Control"      # para self.root.bind("<MOD-x>")
+MOD_LABEL = "\u2318" if IS_MAC else "Ctrl+"   # para textos y accelerator de menús
+
 # =========================================================== i18n
 APP_VERSION = "1.2"
 __version__ = APP_VERSION
@@ -51,7 +56,7 @@ __license__ = "GPL-3.0-or-later"
 
 # Páginas HTML que se abren en el navegador (se elige la del idioma actual).
 # Están en la subcarpeta HTML_DIR (junto al programa); al empaquetar con PyInstaller hay que
-# incluir esa carpeta entera con --add-data "html;html".
+# incluir esa carpeta entera con --add-data ("html;html" en Windows, "html:html" en macOS/Linux).
 HTML_DIR = "html"
 HTML_PAGES = {
     "help":  {"es": "ayuda.html",  "en": "help.html"},
@@ -103,7 +108,7 @@ STRINGS = {
 
         'batch_group': " Edición por lotes (sobre filas seleccionadas; si no hay ninguna, sobre todas) ",
         'op_apply': "Aplicar",
-        'op_undo': "Deshacer (Ctrl+Z)",
+        'op_undo': f"Deshacer ({MOD_LABEL}Z)",
         'op_reset': "Restablecer selección",
 
         'op_add_prefix': "Añadir prefijo",
@@ -252,7 +257,7 @@ STRINGS = {
 
         'batch_group': " Batch edit (on selected rows; if none, on all) ",
         'op_apply': "Apply",
-        'op_undo': "Undo (Ctrl+Z)",
+        'op_undo': f"Undo ({MOD_LABEL}Z)",
         'op_reset': "Reset selection",
 
         'op_add_prefix': "Add prefix",
@@ -727,6 +732,8 @@ class App:
         self.refresh_all()
 
         self.root.protocol("WM_DELETE_WINDOW", self._on_close)
+        if IS_MAC:
+            self.root.createcommand("tk::mac::Quit", self._on_close)
 
     # ---------- utilidades
     def _safe_geometry(self, g, default="1300x820"):
@@ -757,7 +764,7 @@ class App:
         save_prefs(self.prefs)
 
     def _on_ctrl_z(self, event=None):
-        """Ctrl+Z deshace la tabla, salvo que se esté escribiendo en un campo de texto."""
+        """Ctrl+Z (⌘Z en macOS) deshace la tabla, salvo que se esté escribiendo en un campo de texto."""
         try:
             w = self.root.focus_get()
         except (KeyError, tk.TclError):
@@ -795,6 +802,9 @@ class App:
             pass
 
     def _on_close(self):
+        if getattr(self, "_closing", False):
+            return
+        self._closing = True
         self.prefs["geometry"] = self.root.geometry()
         try:
             self.prefs["last_op"] = self._current_op_id()
@@ -804,11 +814,11 @@ class App:
         self.root.destroy()
 
     def _bind_shortcuts(self):
-        self.root.bind("<Control-z>", self._on_ctrl_z)
-        self.root.bind("<Control-o>", lambda e: self.ask_folder())
-        self.root.bind("<Control-e>", lambda e: self.ask_export_csv())
-        self.root.bind("<Control-s>", lambda e: self.ask_save())
-        self.root.bind("<Control-q>", lambda e: self._on_close())
+        self.root.bind(f"<{MOD}-z>", self._on_ctrl_z)
+        self.root.bind(f"<{MOD}-o>", lambda e: self.ask_folder())
+        self.root.bind(f"<{MOD}-e>", lambda e: self.ask_export_csv())
+        self.root.bind(f"<{MOD}-s>", lambda e: self.ask_save())
+        self.root.bind(f"<{MOD}-q>", lambda e: self._on_close())
 
     # ---------- cambio de idioma
     def _change_language(self, code):
@@ -877,14 +887,14 @@ class App:
         menubar = tk.Menu(self.root)
 
         fm = tk.Menu(menubar, tearoff=0)
-        fm.add_command(label=tr("menu_open_folder"), accelerator="Ctrl+O",
+        fm.add_command(label=tr("menu_open_folder"), accelerator=f"{MOD_LABEL}O",
                        command=self.ask_folder)
         add_m = tk.Menu(fm, tearoff=0)
         add_m.add_command(label=tr("menu_add_files"), command=self.ask_add_files)
         add_m.add_command(label=tr("menu_add_folder"), command=self.ask_add_folder)
         fm.add_cascade(label=tr("menu_add"), menu=add_m)
         fm.add_separator()
-        fm.add_command(label=tr("menu_export_csv"), accelerator="Ctrl+E",
+        fm.add_command(label=tr("menu_export_csv"), accelerator=f"{MOD_LABEL}E",
                        command=self.ask_export_csv)
         fm.add_separator()
         fm.add_command(label=tr("menu_clear_list"), command=self.clear_list)
@@ -902,7 +912,7 @@ class App:
                                command=lambda: self._change_language("en"))
         fm.add_cascade(label=tr("menu_language"), menu=lang_m)
         fm.add_separator()
-        fm.add_command(label=tr("menu_exit"), accelerator="Ctrl+Q",
+        fm.add_command(label=tr("menu_exit"), accelerator=f"{MOD_LABEL}Q",
                        command=self._on_close)
         menubar.add_cascade(label=tr("menu_file"), menu=fm)
 
@@ -1040,11 +1050,26 @@ class App:
                         variable=self.rename_files,
                         command=self.refresh_all).pack(side="left")
 
-        save_btn = tk.Button(bot, text=tr("save_copies"),
-                             command=self.ask_save, bg="#0d6efd", fg="white",
-                             font=F(10, "bold"),
-                             padx=14, pady=4, relief="raised", cursor="hand2",
-                             activebackground="#0b5ed7", activeforeground="white")
+        if IS_MAC:
+            # En macOS tk.Button es un botón nativo que ignora bg/fg (saldría blanco con
+            # texto blanco). Con el tema "clam", un ttk.Button con estilo propio sí
+            # respeta los colores.
+            style = ttk.Style()
+            style.configure("Save.TButton", background="#0d6efd", foreground="white",
+                            font=F(10, "bold"), padding=(14, 4),
+                            bordercolor="#0b5ed7", lightcolor="#0d6efd",
+                            darkcolor="#0b5ed7", focuscolor="#0d6efd")
+            style.map("Save.TButton",
+                      background=[("pressed", "#0a58ca"), ("active", "#0b5ed7")],
+                      foreground=[("disabled", "#cfe2ff")])
+            save_btn = ttk.Button(bot, text=tr("save_copies"), command=self.ask_save,
+                                  style="Save.TButton", cursor="hand2")
+        else:
+            save_btn = tk.Button(bot, text=tr("save_copies"),
+                                 command=self.ask_save, bg="#0d6efd", fg="white",
+                                 font=F(10, "bold"),
+                                 padx=14, pady=4, relief="raised", cursor="hand2",
+                                 activebackground="#0b5ed7", activeforeground="white")
         save_btn.pack(side="right", padx=4)
         ttk.Label(bot, textvariable=self.hint, foreground="#0a58ca",
                   font=F(9, "bold")).pack(side="right", padx=10)
