@@ -22,17 +22,23 @@ If you have ever struggled to identify your custom recipes in Nikon NX Studio or
 *   **Safe Saving:** The original files are never modified unless you explicitly choose to do so. When overwriting, it creates automatic backups.
 *   **CSV Export:** Export a detailed log of all the changes you have made.
 *   **Bilingual Interface:** Switch between Spanish and English on the fly.
-*   **Portable:** Available as a standalone `.exe` file. No Python installation required.
+*   **Portable:** Available as a standalone application. No Python installation required.
 
 ### Download & Installation
 
 1. Go to the **[Releases](../../releases)** section of this repository.
-2. Download the latest `Ednoki_v1.2.exe` file.
-3. Move the `.exe` file to any folder on your computer and double-click it to run.
+2. Download the latest version for your operating system (Windows or macOS).
+3. Move the application to any folder on your computer and run it. 
+   * **Windows:** Double-click the `.exe` file.
+   * **macOS:** Double-click the `.app` file.
 
 > **Windows SmartScreen Warning:**
 > Because this is an open-source application without a paid digital signature, Windows Defender or SmartScreen might show a blue warning saying "Windows protected your PC". This is a standard false positive for apps created with PyInstaller.
 > **How to run it:** Click on "More info" and then click "Run anyway".
+
+> **macOS Warning:**
+> Since this application is open-source and not signed with a paid Apple Developer certificate, macOS Gatekeeper will block it the first time you try to open it.
+> **How to run it:** Right-click (or Control-click) the application and select "Open", then click "Open" again in the dialog. Alternatively, go to System Settings > Privacy & Security and click "Open Anyway".
 
 ### How to Use
 
@@ -42,6 +48,16 @@ If you have ever struggled to identify your custom recipes in Nikon NX Studio or
 4. Import the new files into Nikon NX Studio or copy them to your camera's memory card.
 
 *(For more detailed instructions, open the application and go to `Help -> How to install the files`)*
+
+### Keyboard Shortcuts
+
+| Action | Windows/Linux | macOS |
+| :--- | :--- | :--- |
+| Open folder | `Ctrl` + `O` | `⌘` + `O` |
+| Save copies | `Ctrl` + `S` | `⌘` + `S` |
+| Export CSV | `Ctrl` + `E` | `⌘` + `E` |
+| Undo | `Ctrl` + `Z` | `⌘` + `Z` |
+| Quit | `Ctrl` + `Q` | `⌘` + `Q` |
 
 ### Disclaimer & License
 
@@ -65,17 +81,23 @@ Si alguna vez has tenido problemas para identificar tus recetas personalizadas e
 *   **Guardado seguro:** Los archivos originales nunca se modifican a menos que tú lo elijas explícitamente. Al sobrescribir, se crean copias de seguridad automáticas.
 *   **Exportación a CSV:** Exporta un registro detallado de todos los cambios que has realizado.
 *   **Interfaz bilingüe:** Cambia entre español e inglés sobre la marcha.
-*   **Portátil:** Disponible como un archivo `.exe` independiente. No requiere instalación de Python.
+*   **Portátil:** Disponible como una aplicación independiente. No requiere instalación de Python.
 
 ### Descarga e Instalación
 
 1. Ve a la sección de **[Releases](../../releases)** de este repositorio.
-2. Descarga el último archivo `Ednoki_v1.2.exe`.
-3. Mueve el archivo `.exe` a cualquier carpeta de tu ordenador y haz doble clic para ejecutarlo.
+2. Descarga la última versión para tu sistema operativo (Windows o macOS).
+3. Mueve la aplicación a cualquier carpeta de tu ordenador y ejecútala.
+   * **Windows:** Haz doble clic en el archivo `.exe`.
+   * **macOS:** Haz doble clic en el archivo `.app`.
 
 > **Aviso de Windows SmartScreen:**
 > Debido a que es una aplicación de código abierto sin una firma digital de pago, es posible que Windows Defender o SmartScreen muestren un aviso azul diciendo "Windows protegió tu PC". Es un falso positivo habitual en aplicaciones creadas con PyInstaller.
 > **Cómo ejecutarlo:** Haz clic en "Más información" y luego en "Ejecutar de todas formas".
+
+> **Aviso de macOS:**
+> Dado que esta aplicación es de código abierto y no está firmada con un certificado de desarrollador de Apple (de pago), el sistema de seguridad Gatekeeper de macOS bloqueará su apertura la primera vez.
+> **Cómo ejecutarlo:** Haz clic derecho (o Control + clic) sobre la aplicación y selecciona "Abrir", luego vuelve a hacer clic en "Abrir" en el cuadro de diálogo. Alternativamente, ve a Ajustes del Sistema > Privacidad y Seguridad y haz clic en "Abrir de todos modos".
 
 ### Cómo usar
 
@@ -85,6 +107,16 @@ Si alguna vez has tenido problemas para identificar tus recetas personalizadas e
 4. Importa los nuevos archivos en Nikon NX Studio o cópialos en la tarjeta de memoria de tu cámara.
 
 *(Para instrucciones más detalladas, abre la aplicación y ve a `Ayuda -> Cómo instalar los archivos`)*
+
+### Atajos de teclado
+
+| Acción | Windows/Linux | macOS |
+| :--- | :--- | :--- |
+| Abrir carpeta | `Ctrl` + `O` | `⌘` + `O` |
+| Guardar copias | `Ctrl` + `S` | `⌘` + `S` |
+| Exportar CSV | `Ctrl` + `E` | `⌘` + `E` |
+| Deshacer | `Ctrl` + `Z` | `⌘` + `Z` |
+| Salir | `Ctrl` + `Q` | `⌘` + `Q` |
 
 ### Descargo de responsabilidad y Licencia
 
